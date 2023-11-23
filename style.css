@@ -76,6 +76,10 @@ input {
     width: 20px;
     height: 20px;
 }
+.search-container {
+    width: 100%;
+    max-width: 480px;
+}
 .search-bar {
     position: relative;
     width: 100%;
@@ -142,6 +146,9 @@ input {
 }
 
 /* LAYOUT */
+.block {
+    width: 100%;
+}
 .flex-row {
     display: flex;
 }
@@ -189,7 +196,7 @@ input {
     background-color: #656266;
     color: white;
 }
-.bg-gray:focus {
+.btn:focus {
     box-shadow: 0 0 0 3px black, 0 0 0 1px black;
     outline: 2px solid #005BD3;
     outline-offset: 2px;
@@ -241,17 +248,41 @@ input {
 }
 
 /* FONT SIZE */
-.font-small {
-    font-size: 13px;
+.text-12-s {
+    font-size: 12px;
     font-weight: 600;
 }
-.font-semi-bold {
-    font-size: 13px;
-    font-weight: 600;
+.text-12 {
+    font-size: 12px;
+    font-weight: 500;
 }
-.font-bold {
-    font-size: 14px;
+.text-12-r {
+    font-size: 12px;
     font-weight: 400;
+}
+.text-12-s {
+    font-size: 12px;
+    font-weight: 600;
+}
+.text-13 {
+    font-size: 13px;
+    font-weight: 500;
+}
+.text-13-r {
+    font-size: 13px;
+    font-weight: 400;
+}
+.text-13-s {
+    font-size: 13px;
+    font-weight: 600;
+}
+.text-14 {
+    font-size: 14px;
+    font-weight: 500;
+}
+.text-14-s {
+    font-size: 14px;
+    font-weight: 600;
 }
 .show-svg {
     position: relative;
@@ -284,4 +315,19 @@ input {
     width: 1px;
     height: 1px;
     overflow: hidden;
+}
+
+/* SCREEN SIZE */
+@media (max-width:600px){
+    .hide-small {
+        display: none!important;
+    }
+    nav {
+        gap: 10px;
+    }
+}
+@media (min-width:600px){
+    .hide-large {
+        display: none!important;
+    }
 }
