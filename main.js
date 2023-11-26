@@ -2,13 +2,13 @@ function onToggle(id) {
   const dropdown = document.querySelector(`#bg-${id}`);
   const show = document.querySelectorAll(`#onShow-${id}`);
   for (let i = 0; i < 5; i++) {
-    if(i != id) {
+    if (i != id) {
       const dropall = document.querySelector(`#bg-${i}`);
-      const onShow = document.querySelectorAll(`#onShow-${i}`)
-      onShow.forEach(element => {
+      const onShow = document.querySelectorAll(`#onShow-${i}`);
+      onShow.forEach((element) => {
         dropall.classList.remove("bg-light-gray");
         element.style.display = "none";
-      })
+      });
     }
   }
   show.forEach((element) => {
@@ -22,53 +22,83 @@ function onToggle(id) {
   });
 }
 
-function onDowndown(id) {
+function onDowndown(id, event) {
+  console.log(event);
   const dropdown = document.querySelector(`#${id}`);
-  if (dropdown.style.display === "none") {
-    dropdown.style.display = "block";
-  } else {
-    dropdown.style.display = "none";
-  }
+  dropdown.classList.toggle("hide");
 }
-const menubtn1 = document.getElementById('menubtn1');
-const menubtn2 = document.getElementById('menubtn2');
-const dc = document.getElementById('dc');
-const notify = document.getElementById('notification');
-window.addEventListener('click', (event) => {
-  if (!dc.contains(event.target) && !menubtn2.contains(event.target)) {
-    dc.style.display = "none";
-  }
-  if (!notify.contains(event.target) && !menubtn1.contains(event.target)) {
-    notify.style.display = "none";
-  }
-});
+const menubtn1 = document.getElementById("menubtn1");
+const menubtn2 = document.getElementById("menubtn2");
+const dc = document.getElementById("dc");
+const notify = document.getElementById("notification");
 
 const value = document.querySelector("#value");
 const input = document.querySelector("#slide");
 value.textContent = input.value;
-input.addEventListener("input", (event) => {
-  console.log(event);
-  value.textContent = event.target.value;
-});
+let count = parseInt(input.value)
 
-const check = document.querySelectorAll('.show-svg input');
-check.forEach(element => {
-  element.addEventListener('click', (e)=> {
-    const checked = e.target;
-    const parentElement = checked.parentNode;
-    const childElement = parentElement.childNodes[1]
-    const svgElement = parentElement.childNodes[5].childNodes[1]
-    if(e.target.checked === true) {
-      childElement.classList.remove('sr-only')
-      svgElement.classList.add('hidden')
-      input.setAttribute('value', parseInt(input.value) + 1)
-      value.textContent = input.value;
+function handleMarkDoneOrNotDone(id) {
+  const checkboxBtn = document.getElementById(`checkbox-btn-${id}`);
+  const notCompletedIcon = document.getElementById(`not-completed-icon-${id}`);
+  const completedIcon = document.getElementById(`completed-icon-${id}`);
+  const loadingIcon = document.getElementById(`loading-icon-${id}`);
+  const checkboxStatus = document.getElementById(`status-${id}`);
+  
+  checkboxBtn.addEventListener("click", () => {
+    const checked = checkboxBtn.classList.contains("checkbox-done");
+    if (checked) {
+      handleMarkAsNotDone();
     } else {
-      childElement.classList.add('sr-only')
-      svgElement.classList.remove('hidden')
-      input.setAttribute('value', input.value - 1)
-      value.textContent = input.value;
+      handleMarkAsDone();
     }
-  })
-})
+  });
 
+  function handleMarkAsDone() {
+    notCompletedIcon.classList.add("hide");
+    loadingIcon.classList.remove("hide");
+    checkboxStatus.ariaLabel = "Loading. Please wait...";
+    setTimeout(() => {
+      loadingIcon.classList.add("hide");
+      completedIcon.classList.remove("hide");
+      checkboxBtn.classList.add("checkbox-done");
+      checkboxBtn.ariaLabel = checkboxBtn.ariaLabel.replace(
+        "as done",
+        "as not done"
+      );
+      checkboxStatus.ariaLabel = "Successfully marked as done.";
+      count ++
+      if(count >= 5) {
+        input.setAttribute("value", 5);
+        value.textContent = 5;
+      } else {
+        input.setAttribute("value", count);
+        value.textContent = count;
+      }
+    }, 3000);
+  }
+
+  function handleMarkAsNotDone() {
+    completedIcon.classList.add("hide");
+    loadingIcon.classList.remove("hide");
+    checkboxStatus.ariaLabel = "Loading. Please wait...";
+    setTimeout(() => {
+      loadingIcon.classList.add("hide");
+      notCompletedIcon.classList.remove("hide");
+      checkboxBtn.classList.remove("checkbox-done");
+      checkboxBtn.ariaLabel = checkboxBtn.ariaLabel.replace(
+        "as not done",
+        "as done"
+      );
+      checkboxStatus.ariaLabel = "Successfully marked as not done.";
+      count --;
+      console.log(count);
+      if(count <= 0) {
+        input.setAttribute("value", 0);
+        value.textContent = 0;
+      } else {
+        input.setAttribute("value", count);
+        value.textContent = input.value;
+      }
+    }, 3000);
+  }
+}

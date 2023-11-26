@@ -60,12 +60,12 @@
     </div>
     <div class="flex-row gap-small">
       <div>
-        <button type="button" aria-labelledby="labeldiv" onclick="onDowndown('notification')" class="bg-gray btn padding-xs round notification">
-          <svg class="icon" width="41" height="40" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="notification-bell" onclick="onDowndown('notification-bell')" class="bg-gray round bell-icon">
+          <svg width="20" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M7.75203 14.4239L5.3061 14.1427C3.45144 13.9295 2.92542 11.4844 4.52838 10.5274L4.5933 10.4886C5.466 9.96761 6.00045 9.02609 6.00045 8.00969V7.5C6.00045 5.01472 8.01517 3 10.5005 3C12.9857 3 15.0005 5.01472 15.0005 7.5V8.00969C15.0005 9.02609 15.5349 9.96761 16.4076 10.4886L16.4725 10.5274C18.0755 11.4844 17.5495 13.9295 15.6948 14.1427L13.152 14.435V14.8C13.152 16.2912 11.9432 17.5 10.452 17.5C8.96086 17.5 7.75203 16.2912 7.75203 14.8V14.4239ZM11.652 14.5H9.25203V14.8C9.25203 15.4627 9.78929 16 10.452 16C11.1148 16 11.652 15.4627 11.652 14.8V14.5ZM8.50045 13H12.5005L15.5235 12.6525C15.953 12.6032 16.0748 12.0369 15.7036 11.8153L15.6387 11.7766C15.5591 11.7291 15.4815 11.6793 15.4057 11.6273C15.2506 11.521 15.1036 11.4055 14.9651 11.2818C14.9405 11.2598 14.9162 11.2377 14.8922 11.2152C14.0144 10.395 13.5005 9.23833 13.5005 8.00969V7.5C13.5005 5.84315 12.1573 4.5 10.5005 4.5C8.8436 4.5 7.50045 5.84315 7.50045 7.5V8.00969C7.50045 9.23833 6.98651 10.395 6.10871 11.2152C6.08469 11.2377 6.06039 11.2598 6.03583 11.2818C5.89734 11.4055 5.75029 11.521 5.59523 11.6273C5.51945 11.6793 5.44176 11.7291 5.36222 11.7766L5.29729 11.8153C4.9261 12.0369 5.0479 12.6032 5.47739 12.6525L8.50045 13Z" fill="#fff" />
           </svg>
         </button>
-        <div id="notification" id="labeldiv" class="dropmenu padding-16 round-medium hide">
+        <div id="notification-bell" aria-labelledby="notification-menu" class="dropmenu padding-16 round-medium hide">
           <div class="flex-row justify-between item-center">
             <h2 class="text-black text-14-s">Alerts</h2>
             <div class="flex-row gap-medium item-center justify-center">
@@ -86,16 +86,14 @@
         </div>
       </div>
       <div>
-        <button type="button" aria-labelledby="labeldiv" onclick="onDowndown('dc')" class="bg-gray btn flex-row justify-between item-center gap-small round">
-          <h2 class="text-12 padding-left hide-small">
-            Davii Collections
-          </h2>
-          <span class="bg-green text-12 align-center padding round">
+        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="davii-collections" onclick="onDowndown('dc')" class="davii round text-12 bg-gray">
+          <span class="hide-small">Davii Collections</span>
+          <span class="bg-green align-center padding round">
             DC
           </span>
         </button>
-        <div id="dc" id="labeldiv" class="dropmenu round-medium padding-6 hide">
-          <ul>
+        <div id="dc" id="davii-collections" aria-labelledby="davii-collections-menu" class="dropmenu round-medium padding-6 hide">
+          <ul role="menu">
             <li>
               <div tabindex="0" role="button" class="bg-light padding-xs flex-row justify-between align-center text-13-s round">
                 <button>
@@ -137,56 +135,57 @@
     </div>
   </nav>
   <main>
-    <div id="exit" style="width: 100%;">
-      <div class="bg-black flex-row  wrap text-13 padding gap-small round">
-        <button style="margin-right: auto;">Extend your trail for $1/month for 3 months on select plans.</button>
-        <div class="bg-white flex-row item-center justify-center text-black padding-small round-small text-12-s">Select a plan
+    <div id="exit" style="margin-top: 32px;">
+      <div class="bg-black select-plan-wrap round-8">
+        <span style="margin-right: auto;">Extend your trail for $1/month for 3 months on select plans.</span>
+        <div class="select-plan">
+          <div class="bg-white text-black padding-small round-small text-12-s">Select a plan
+          </div>
+          <button type="button" aria-label="exit button" onclick="onDowndown('exit')"><svg class="icon" width="20" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.4697 15.0303C14.7626 15.3232 15.2374 15.3232 15.5303 15.0303C15.8232 14.7374 15.8232 14.2626 15.5303 13.9697L11.5607 10L15.5303 6.03033C15.8232 5.73744 15.8232 5.26256 15.5303 4.96967C15.2374 4.67678 14.7626 4.67678 14.4697 4.96967L10.5 8.93934L6.53033 4.96967C6.23744 4.67678 5.76256 4.67678 5.46967 4.96967C5.17678 5.26256 5.17678 5.73744 5.46967 6.03033L9.43934 10L5.46967 13.9697C5.17678 14.2626 5.17678 14.7374 5.46967 15.0303C5.76256 15.3232 6.23744 15.3232 6.53033 15.0303L10.5 11.0607L14.4697 15.0303Z" fill="#fff" />
+            </svg>
+          </button>
         </div>
-        <button type="button" aria-label="exit" class="flex-row" style="align-self: center;" onclick="onDowndown('exit')"><svg class="icon" width="20" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.4697 15.0303C14.7626 15.3232 15.2374 15.3232 15.5303 15.0303C15.8232 14.7374 15.8232 14.2626 15.5303 13.9697L11.5607 10L15.5303 6.03033C15.8232 5.73744 15.8232 5.26256 15.5303 4.96967C15.2374 4.67678 14.7626 4.67678 14.4697 4.96967L10.5 8.93934L6.53033 4.96967C6.23744 4.67678 5.76256 4.67678 5.46967 4.96967C5.17678 5.26256 5.17678 5.73744 5.46967 6.03033L9.43934 10L5.46967 13.9697C5.17678 14.2626 5.17678 14.7374 5.46967 15.0303C5.76256 15.3232 6.23744 15.3232 6.53033 15.0303L10.5 11.0607L14.4697 15.0303Z" fill="#fff" />
-          </svg>
-        </button>
       </div>
     </div>
-    <div class="bg-white padding round-large">
+    <div class="bg-white padding round-large" style="margin-top: 16px;">
       <div class="flex-row justify-between item-start padding">
         <div class="flex-col gap-small">
           <button class="text-14-s">Setup guide.</button>
           <p class="text-13-r">Use this personalized guide to get your store up and running.</p>
           <!-- slider -->
           <div class="range text-12-r">
-            <output id="value"></output>/ 5 completed <span><label for="slide" class="sr-only"><input type="range" name="slide" id="slide" min="0" max="5" value="0" step="1"></label></span>
+            <span id="value"></span>/ 5 completed <label class="flex-row item-center" for="slide"><input type="range" name="slide" id="slide" min="0" max="5" value="0" step="1"></label>
           </div>
         </div>
-        <button type="button" aria-labelledby="labeldiv" onclick="onDowndown('dropdown')"><svg class="icon text-black" width="41" height="40" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button type="button" aria-label="dropmenu" onclick="onDowndown('dropdown')"><svg class="icon text-black" width="41" height="40" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0303 12.2803C14.7374 12.5732 14.2626 12.5732 13.9697 12.2803L10.5 8.81066L7.03033 12.2803C6.73744 12.5732 6.26256 12.5732 5.96967 12.2803C5.67678 11.9874 5.67678 11.5126 5.96967 11.2197L9.96967 7.21967C10.2626 6.92678 10.7374 6.92678 11.0303 7.21967L15.0303 11.2197C15.3232 11.5126 15.3232 11.9874 15.0303 12.2803Z" fill="#000" />
           </svg>
         </button>
       </div>
 
       <!-- card container -->
-      <div class="card" id="dropdown" id="labeldiv">
+      <div class="card" id="dropdown" aria-labelledby="dropmenu">
         <!-- card 1 -->
         <div id="bg-0" class="flex-row justify-between padding round-medium gap-large bg-light-gray">
           <div class="flex-row justify-center gap-small">
-            <div class="show-svg cursor">
-              <div id="control" class="checked sr-only"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
-                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
-                </svg></div>
-              <input type="checkbox" id="mark" name="isCompleted" class="sr-only" />
-              <label for="mark">
-                <svg class="hide-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
+            <div>
+              <span id="status-0" aria-live="polite"></span>
+              <button id="checkbox-btn-0" onclick="handleMarkDoneOrNotDone('0')" aria-label="mark customize your online store as done" class="checkbox-btn">
+                <svg id="not-completed-icon-0" aria-hidden="true" class="not-completed-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
                   <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
                 </svg>
-
-                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 28 28" fill="none">
+                <svg id="loading-icon-0" aria-hidden="true" class="loading-icon hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
                   <path d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-              </label>
+                <svg id="completed-icon-0" aria-hidden="true" class="completed-icon hide" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
+                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
+                </svg>
+              </button>
             </div>
             <div class="flex-col justify-between gap-medium">
-              <h4><button onclick="onToggle('0')" class="text-13">Customize your online store</button></h4>
+              <h3><button onclick="onToggle('0')" class="text-13">Customize your online store</button></h3>
               <p id="onShow-0" class="text-13">Choose a theme and add your logo, colors, and images to reflect your brand. <a href="https://help.shopify.com/en/manual/online-store/themes/customizing-themes">Learn more</a></p>
               <div id="onShow-0" class="flex-row gap-small">
                 <button type="button" class="btn-primary padding-small round-small font-small">Customize theme</button>
@@ -198,23 +197,23 @@
         <!-- card 2 -->
         <div id="bg-1" class="flex-row justify-between padding round-medium gap-large">
           <div class="flex-row justify-center gap-small">
-            <div class="show-svg cursor">
-              <div id="control" class="checked sr-only"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
-                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
-                </svg></div>
-              <input type="checkbox" id="mark1" name="isCompleted" class="sr-only" />
-              <label for="mark1">
-                <svg class="hide-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
+            <div>
+              <span id="status-1" aria-live="polite"></span>
+              <button id="checkbox-btn-1" onclick="handleMarkDoneOrNotDone('1')" aria-label="mark add your first product as done" class="checkbox-btn">
+                <svg id="not-completed-icon-1" aria-hidden="true" class="not-completed-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
                   <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
                 </svg>
-                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
+                <svg id="loading-icon-1" aria-hidden="true" class="loading-icon hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
                   <path d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-              </label>
+                <svg id="completed-icon-1" aria-hidden="true" class="completed-icon hide" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
+                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
+                </svg>
+              </button>
             </div>
             <div class="flex-col justify-between gap-medium">
-              <h4><button onclick="onToggle('1')" class="text-13">Add your first product</button></h4>
+              <h3><button onclick="onToggle('1')" class="text-13">Add your first product</button></h3>
               <p id="onShow-1" class="text-13 hide">Write a description, add photos, and set pricing for the products you plan to sell. <a href="https://help.shopify.com/en/manual/products/add-update-products">Learn more</a></p>
               <div id="onShow-1" class="flex-row gap-medium hide">
                 <button type="button" class="btn-primary padding-small round-small font-small" style="margin-right: 4px;">Add product</button>
@@ -227,23 +226,23 @@
         <!-- card 3 -->
         <div id="bg-2" class="flex-row justify-between padding round-medium gap-large">
           <div class="flex-row justify-center gap-small">
-            <div class="show-svg cursor">
-              <div id="control" class="checked sr-only"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
-                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
-                </svg></div>
-              <input type="checkbox" id="mark2" name="isCompleted" class="sr-only" />
-              <label for="mark2">
-                <svg class="hide-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
+            <div>
+              <span id="status-2" aria-live="polite"></span>
+              <button id="checkbox-btn-2" onclick="handleMarkDoneOrNotDone('2')" aria-label="mark add a custom domain as done" class="checkbox-btn">
+                <svg id="not-completed-icon-2" aria-hidden="true" class="not-completed-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
                   <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
                 </svg>
-                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
+                <svg id="loading-icon-2" aria-hidden="true" class="loading-icon hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
                   <path d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-              </label>
+                <svg id="completed-icon-2" aria-hidden="true" class="completed-icon hide" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
+                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
+                </svg>
+              </button>
             </div>
             <div class="flex-col justify-between gap-medium">
-              <h4><button onclick="onToggle('2')" class="text-13">Add a custom domain</button></h4>
+              <h3><button onclick="onToggle('2')" class="text-13">Add a custom domain</button></h3>
               <p id="onShow-2" class="text-13 hide">Your current domain is 222219.myshopify.com but you can add a custom domain to help customers find your online store. <a href="https://help.shopify.com/en/manual/domains">Learn more</a></p>
               <div id="onShow-2" class="flex-row gap-small hide">
                 <button type="button" class="btn-primary padding-small round-small font-small">Add domain</button>
@@ -255,23 +254,23 @@
         <!-- card 4 -->
         <div id="bg-3" class="flex-row justify-between padding round-medium gap-large">
           <div class="flex-row justify-center gap-small">
-            <div class="show-svg cursor">
-              <div id="control" class="checked sr-only"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
-                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
-                </svg></div>
-              <input type="checkbox" id="mark3" name="isCompleted" class="sr-only" />
-              <label for="mark3">
-                <svg class="hide-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
+            <div>
+              <span id="status-3" aria-live="polite"></span>
+              <button id="checkbox-btn-3" onclick="handleMarkDoneOrNotDone('3')" aria-label="mark name your store as done" class="checkbox-btn">
+                <svg id="not-completed-icon-3" aria-hidden="true" class="not-completed-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
                   <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
                 </svg>
-                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
+                <svg id="loading-icon-3" aria-hidden="true" class="loading-icon hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
                   <path d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-              </label>
+                <svg id="completed-icon-3" aria-hidden="true" class="completed-icon hide" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
+                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
+                </svg>
+              </button>
             </div>
             <div class="flex-col justify-between gap-medium">
-              <h4><button onclick="onToggle('3')" class="text-13">Name your store</button></h4>
+              <h3><button onclick="onToggle('3')" class="text-13">Name your store</button></h3>
               <p id="onShow-3" class="text-13 hide">Your temporary store name is currently Davii collections. The store name appears in your admin and your online store. <a href="https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name">Learn more</a></p>
               <div id="onShow-3" class="flex-row gap-small hide">
                 <button type="button" class="btn-primary padding-small round-small font-small">Name store</button>
@@ -283,24 +282,24 @@
         <!-- card 5 -->
         <div id="bg-4" class="flex-row justify-between padding round-medium gap-large">
           <div class="flex-row justify-center gap-small">
-            <div class="show-svg cursor">
-              <div id="control" class="checked sr-only"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
-                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
-                </svg></div>
-              <input type="checkbox" id="mark4" name="isCompleted" class="sr-only" />
-              <label for="mark4">
-                <svg class="hide-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
+            <div>
+              <span id="status-4" aria-live="polite"></span>
+              <button id="checkbox-btn-4" onclick="handleMarkDoneOrNotDone('4')" aria-label="mark set up a payment provider as done" class="checkbox-btn">
+                <svg id="not-completed-icon-4" aria-hidden="true" class="not-completed-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none">
                   <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
                 </svg>
-                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
+                <svg id="loading-icon-4" aria-hidden="true" class="loading-icon hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
                   <path d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2" stroke="#8A8A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-              </label>
+                <svg id="completed-icon-4" aria-hidden="true" class="completed-icon hide" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" fill="#303030"></circle>
+                  <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="#fff"></path>
+                </svg>
+              </button>
             </div>
             <div class="flex-col justify-between gap-medium">
-              <h4><button onclick="onToggle('4')" class="text-13">Set up a payment provider</button></h4>
-              <p id="onShow-4" class="text-13 hide">Choose a payment provider to start accepting payments. You’ll need to create an account with the payment provider and set it up with your Shopify store. <a href="https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name">Learn more</a></p>
+              <h3><button onclick="onToggle('4')" class="text-13">Set up a payment provider</button></h3>
+              <p id="onShow-4" class="text-13 hide">Choose a payment provider to start accepting payments. You’ll need to create an account with the payment provider and set it up with your Shopify store. <a href="https://help.shopify.com/en/manual/payments">Learn more</a></p>
               <div id="onShow-4" class="flex-row gap-small hide">
                 <button type="button" class="btn-primary padding-small round-small font-small">Set up payment</button>
               </div>
