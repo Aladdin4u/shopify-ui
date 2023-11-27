@@ -15,16 +15,25 @@ ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 li {
-    margin: 0 6px;
+    padding: 0 6px;
 }
 .list:hover {
     background-color: #F1F1F1;
 }
+.list:focus {
+    /* box-shadow: 0 0 0 3px black, 0 0 0 1px black; */
+    outline: 2px solid #005BD3;
+    outline-offset: 2px;
+    /* background-color: #656266; */
+    /* color: white; */
+}
 hr {
-    margin: 4px 0;
-    border: 0.7px solid#E1E1E1;
+    border: 0.75px solid#E1E1E1;
 }
 button{
     all: unset;
@@ -156,7 +165,7 @@ input {
     position: relative;
     display: inline-block;
 }
-.dropmenu {
+.dropdown-content {
     z-index: 10;
     display: block;
     position: absolute;
@@ -164,6 +173,15 @@ input {
     right: 4px;
     background-color: white;
     min-width: 320px;
+}
+.menu-item {
+    display: flex;
+    width: 297px;
+    height: 18px;
+    padding: 6px;
+    gap: 6px;
+    border-radius: 8px;
+    align-items: center;
 }
 .range {
     display: flex;
@@ -259,11 +277,11 @@ input {
     color: white;
 }
 .btn:focus {
-    box-shadow: 0 0 0 3px black, 0 0 0 1px black;
+    /* box-shadow: 0 0 0 3px black, 0 0 0 1px black; */
     outline: 2px solid #005BD3;
     outline-offset: 2px;
-    background-color: #656266;
-    color: white;
+    /* background-color: #656266; */
+    /* color: white; */
 }
 .bg-green {
     background-color: #36FBA1;
@@ -279,7 +297,8 @@ input {
     color: black;
 }
 .border-gray {
-    border-radius: 8px;
+    border: 1px solid #DBDBDB;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
 }
 .padding-4 {
     padding: 4px;
@@ -358,34 +377,6 @@ input {
     font-size: 14px;
     font-weight: 600;
 }
-.show-svg {
-    position: relative;
-    width: 20px;
-    height: 20px;
-}
-.svg {
-    display: none;
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
-}
-.checked {
-    display: block;
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
-}
-.show-svg:hover .svg {
-    display: inline;
-}
-.show-svg:hover .hide-svg {
-    visibility: hidden;
-}
-.hidden {
-    visibility: hidden;
-}
 .hide {
     display: none;
 }
@@ -419,6 +410,11 @@ input {
     }
     .davii {
         padding: 0;
+    }
+    .davii {
+        display: flex;
+        padding: 2px;
+        align-items: center;
     }
     .round-8 {
         border-radius: 0;

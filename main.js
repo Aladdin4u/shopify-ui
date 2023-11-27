@@ -1,3 +1,4 @@
+const HIDDEN_CLASS = "hide"
 function onToggle(id) {
   const dropdown = document.querySelector(`#bg-${id}`);
   const show = document.querySelectorAll(`#onShow-${id}`);
@@ -22,15 +23,21 @@ function onToggle(id) {
   });
 }
 
-function onDowndown(id, event) {
-  console.log(event);
+function onDowndown(id, buttonId) {
   const dropdown = document.querySelector(`#${id}`);
-  dropdown.classList.toggle("hide");
+  closeOtherDropdowns(buttonId);
+  dropdown.classList.toggle(HIDDEN_CLASS);
 }
-const menubtn1 = document.getElementById("menubtn1");
-const menubtn2 = document.getElementById("menubtn2");
-const dc = document.getElementById("dc");
-const notify = document.getElementById("notification");
+
+function closeOtherDropdowns(excludeButtonId) {
+  var dropdowns = document.querySelectorAll('.dropdown-content');
+  dropdowns.forEach(function (dropdown) {
+    var buttonId = dropdown.getAttribute('aria-labelledby');
+    if (excludeButtonId !== buttonId) {
+      dropdown.classList.add('hide');
+    }
+  });
+}
 
 const value = document.querySelector("#value");
 const input = document.querySelector("#slide");
@@ -54,12 +61,12 @@ function handleMarkDoneOrNotDone(id) {
   });
 
   function handleMarkAsDone() {
-    notCompletedIcon.classList.add("hide");
-    loadingIcon.classList.remove("hide");
+    notCompletedIcon.classList.add(HIDDEN_CLASS);
+    loadingIcon.classList.remove(HIDDEN_CLASS);
     checkboxStatus.ariaLabel = "Loading. Please wait...";
     setTimeout(() => {
-      loadingIcon.classList.add("hide");
-      completedIcon.classList.remove("hide");
+      loadingIcon.classList.add(HIDDEN_CLASS);
+      completedIcon.classList.remove(HIDDEN_CLASS);
       checkboxBtn.classList.add("checkbox-done");
       checkboxBtn.ariaLabel = checkboxBtn.ariaLabel.replace(
         "as done",
@@ -78,12 +85,12 @@ function handleMarkDoneOrNotDone(id) {
   }
 
   function handleMarkAsNotDone() {
-    completedIcon.classList.add("hide");
-    loadingIcon.classList.remove("hide");
+    completedIcon.classList.add(HIDDEN_CLASS);
+    loadingIcon.classList.remove(HIDDEN_CLASS);
     checkboxStatus.ariaLabel = "Loading. Please wait...";
     setTimeout(() => {
-      loadingIcon.classList.add("hide");
-      notCompletedIcon.classList.remove("hide");
+      loadingIcon.classList.add(HIDDEN_CLASS);
+      notCompletedIcon.classList.remove(HIDDEN_CLASS);
       checkboxBtn.classList.remove("checkbox-done");
       checkboxBtn.ariaLabel = checkboxBtn.ariaLabel.replace(
         "as not done",
