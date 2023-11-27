@@ -26,11 +26,8 @@ li {
     background-color: #F1F1F1;
 }
 .list:focus {
-    /* box-shadow: 0 0 0 3px black, 0 0 0 1px black; */
     outline: 2px solid #005BD3;
     outline-offset: 2px;
-    /* background-color: #656266; */
-    /* color: white; */
 }
 hr {
     border: 0.75px solid#E1E1E1;
@@ -408,8 +405,11 @@ input {
         gap: 16px;
         align-self: stretch;
     }
-    .davii {
-        padding: 0;
+    .select-plan {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     .davii {
         display: flex;

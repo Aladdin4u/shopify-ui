@@ -51,14 +51,12 @@ function handleMarkDoneOrNotDone(id) {
   const loadingIcon = document.getElementById(`loading-icon-${id}`);
   const checkboxStatus = document.getElementById(`status-${id}`);
   
-  checkboxBtn.addEventListener("click", () => {
     const checked = checkboxBtn.classList.contains("checkbox-done");
     if (checked) {
       handleMarkAsNotDone();
     } else {
       handleMarkAsDone();
     }
-  });
 
   function handleMarkAsDone() {
     notCompletedIcon.classList.add(HIDDEN_CLASS);
