@@ -1,4 +1,5 @@
 const HIDDEN_CLASS = "hide"
+const CHECKBOX_DONE = "checkbox-done"
 function onToggle(id) {
   const dropdown = document.querySelector(`#bg-${id}`);
   const show = document.querySelectorAll(`#onShow-${id}`);
@@ -51,7 +52,7 @@ function handleMarkDoneOrNotDone(id) {
   const loadingIcon = document.getElementById(`loading-icon-${id}`);
   const checkboxStatus = document.getElementById(`status-${id}`);
   
-    const checked = checkboxBtn.classList.contains("checkbox-done");
+    const checked = checkboxBtn.classList.contains(CHECKBOX_DONE);
     if (checked) {
       handleMarkAsNotDone();
     } else {
@@ -65,7 +66,7 @@ function handleMarkDoneOrNotDone(id) {
     setTimeout(() => {
       loadingIcon.classList.add(HIDDEN_CLASS);
       completedIcon.classList.remove(HIDDEN_CLASS);
-      checkboxBtn.classList.add("checkbox-done");
+      checkboxBtn.classList.add(CHECKBOX_DONE);
       checkboxBtn.ariaLabel = checkboxBtn.ariaLabel.replace(
         "as done",
         "as not done"
@@ -89,7 +90,7 @@ function handleMarkDoneOrNotDone(id) {
     setTimeout(() => {
       loadingIcon.classList.add(HIDDEN_CLASS);
       notCompletedIcon.classList.remove(HIDDEN_CLASS);
-      checkboxBtn.classList.remove("checkbox-done");
+      checkboxBtn.classList.remove(CHECKBOX_DONE);
       checkboxBtn.ariaLabel = checkboxBtn.ariaLabel.replace(
         "as not done",
         "as done"
